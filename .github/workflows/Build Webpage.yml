@@ -1,0 +1,35 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Webpage Build
+
+on:
+  push:
+    branches:
+      - webpagev2
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: 'webpagev2'
+      - uses: webfactory/ssh-agent@v0.4.1
+        with:
+          ssh-private-key: ${{ secrets.SSH_P_KEY }}
+      - name: setup node
+        uses: actions/setup-node@v2-beta
+        with:
+          node-version: '12'
+      - name: install deps and predeploy
+        run: |
+          yarn install
+          yarn predeploy
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@3.7.1
+        with:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          BRANCH: build
+          FOLDER: build
+          CLEAN: true
+          CLEAN_EXCLUDE: '["CNAME"]'

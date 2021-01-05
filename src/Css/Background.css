@@ -1,0 +1,59 @@
+#Background {
+    position: absolute;
+    z-index: 5;
+    width: 100%;
+}
+.PulseContainer {
+    position: absolute;
+    width: 42px;
+    height: 42px;
+    top: -21px;
+    left: -21px;
+    display: grid;
+}
+
+.Pulse {
+    background-color: white;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    margin: auto;
+    opacity: 0.19;
+    animation-name: pulsate;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+
+.Dot {
+    position: absolute;
+    background-color: white;
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+    display: grid;
+    margin: auto;
+    top: -12px;
+    left: -12px;
+}
+
+.InnerDot {
+    background-color: #057EFF;
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    margin: auto;
+}
+
+@keyframes pulsate {
+    0% {
+        transform: scale(0.1,0.1);
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.2;
+    }
+    100%{
+        transform: scale(1.2,1.2);
+        opacity: 0.0;
+    }
+}

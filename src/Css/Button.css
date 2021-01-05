@@ -1,0 +1,12 @@
+.ButtonBase {
+    position: relative;
+    border-radius: 8px;
+    font-family: "Avenir Next Cyr", sans-serif ;
+    margin: 0 30px 0 30px;
+    text-align: center;
+    display: table;
+}
+
+.ButtonBase:hover {
+    cursor: pointer;
+}
