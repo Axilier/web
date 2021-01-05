@@ -5,7 +5,9 @@ name: Webpage Build
 on:
   push:
     branches:
-      - webpagev2
+      - master
+  repository_dispatch:
+    types: [build]
 
 jobs:
   build:
