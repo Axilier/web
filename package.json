@@ -13,7 +13,7 @@
     "@types/react-dom": "^16.9.0",
     "@types/react-router-dom": "^5.1.6",
     "animejs": "^3.2.0",
-    "mapit-build-screen": "ssh://git@github.com:KLewin23/Mapit-Build-Screen#main",
+    "mapit-build-screen": "ssh://git@github.com:Axilier/build-screen#build",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
     "react-router-dom": "^5.2.0",
