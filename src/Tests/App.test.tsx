@@ -1,9 +1,9 @@
-import React from 'react';
-import { render } from '@testing-library/react';
-import Homepage from '../Screens/Homepage';
+import React from "react";
+import { render } from "@testing-library/react";
+import HomepageV0 from "../Components/Homepage/HomepageV0";
 
-test('renders learn react link', () => {
-  const { getByText } = render(<Homepage />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+test("renders learn react link", () => {
+    const { getByText } = render(<HomepageV0 />);
+    const linkElement = getByText(/learn react/i);
+    expect(linkElement).toBeInTheDocument();
 });
