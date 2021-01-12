@@ -5,7 +5,9 @@ name: Webpage Build
 on:
   push:
     branches:
-      - webpagev2
+      - master
+  repository_dispatch:
+    types: [build]
 
 jobs:
   build:
@@ -13,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          ref: 'webpagev2'
+          ref: 'master'
       - uses: webfactory/ssh-agent@v0.4.1
         with:
           ssh-private-key: ${{ secrets.SSH_P_KEY }}
