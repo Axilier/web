@@ -1,100 +1,61 @@
-#Logo {
-    position: relative;
-    width: 150px;
-    float: left;
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;700&display=swap');
+
+.top-bar {
+    display: flex;
+    height: 65px;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 23%;
+    justify-content: space-between;
 }
 
-#HomeScreen {
+.top-bar-item {
+    display: flex;
+    height: 65px;
+    flex-direction: row;
+    align-items: center;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 16px;
+    color: black;
+    font-weight: normal;
+}
+
+.top-bar-item div {
+    margin: 0 30px;
+}
+
+.main-body {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    z-index: 1;
+}
+
+.main-body-item {
+    display: flex;
+    width: 50%;
+    justify-content: center;
+    padding-top: 50px;
+    align-items: baseline;
+}
+
+.floating-text {
+    font-family: 'IBM Plex Sans', sans-serif;
     position: absolute;
     z-index: 10;
-    height: 500px;
-    width: 100%;
+    left: 23%;
+    top: 100px;
 }
 
-#Container {
-    display: flex;
-    flex-direction: column;
-    margin: 0 200px 0 200px;
-    color: white;
-    font-family: "Avenir Next Cyr", sans-serif ;
-}
-
-#Toolbar {
-    position: relative;
-    margin-top: 80px;
-    width: 100%;
-    float: right;
-    display: flex;
-    justify-content:space-between ;
-}
-
-.ButtonGroup {
-    align-self: center;
-    display: flex;
-    height: 100%;
-    align-items: center;
-}
-
-#Slogan {
-    text-align: center;
+.floating-text-title {
     font-size: 48px;
-    display: inline-block;
-    margin-top: 100px;
+    color: #057EFF;
     font-weight: bold;
-}
-#SubSlogan {
-    text-align: center;
-    font-size: 28px;
-    font-weight: bold;
+    margin: 30px 0;
 }
 
-.ButtonEffect:hover {
-    //transform: translateY(-5px);
-    animation: buttonRaise 1s;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
-
-.ButtonEffect::after {
-    content: "";
-    display: inline-block;
-    height: 100%;
-    width: 100%;
-    border-radius: 100px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    transition: all .4s;
-}
-
-.ButtonEffect:active {
-    transform: translateY(-1px);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-}
-
-.ButtonEffect:hover::after {
-    transform: scaleX(1.4) scaleY(1.6);
-    opacity: 0;
-}
-.ButtonEffect:link,
-.ButtonEffect:visited {
-    text-transform: uppercase;
-    text-decoration: none;
-    padding: 15px 40px;
-    display: inline-block;
-    border-radius: 100px;
-    transition: all .2s;
-    position: absolute;
-}
-
-@keyframes buttonRaise {
-    0% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-3px);
-    }
-    100% {
-        transform: translateY(0);
-    }
+.floating-text-small {
+    font-size: 18px;
+    color: #525252;
+    margin-bottom: 40px;
 }

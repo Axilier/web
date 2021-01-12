@@ -13,11 +13,11 @@
     "@types/react-dom": "^16.9.0",
     "@types/react-router-dom": "^5.1.6",
     "animejs": "^3.2.0",
-    "mapit-build-screen": "ssh://git@github.com:KLewin23/Mapit-Build-Screen#main",
+    "build-screen": "ssh://git@github.com:Axilier/build-screen#build",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.3",
+    "react-scripts": "4.0.1",
     "typescript": "~3.7.2"
   },
   "scripts": {
@@ -50,6 +50,7 @@
     "eslint-config-prettier": "^6.12.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-react": "^7.21.2",
     "eslint-plugin-react-hooks": "^4.1.2",
     "gh-pages": "^2.2.0",
