@@ -4,9 +4,7 @@ import "./Css/index.css";
 import BuildScreen from "build-screen";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import * as serviceWorker from "./serviceWorker";
-import { Homepage, Login } from "./Components";
-import Account from "./Components/Account";
-import FourOFour from "./Components/FourOFour";
+import { Account, FourOFour, Homepage, Login, SignUp } from "./Components";
 
 ReactDOM.render(
     <BrowserRouter basename={"/"}>
@@ -22,6 +20,9 @@ ReactDOM.render(
             </Route>
             <Route exact path={"/account"}>
                 <Account />
+            </Route>
+            <Route exact path={"/signup"}>
+                <SignUp />
             </Route>
             <Route path={"*"}>
                 <FourOFour />

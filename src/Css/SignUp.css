@@ -1,0 +1,14 @@
+.web-signup-strength-text {
+    display: flex;
+    flex-direction: row;
+    color: #BEBEBE;
+    font-size: 12px;
+    margin: 5px 0 4px 10px;
+    align-self: flex-start;
+    justify-content: center;
+    line-height: 0.8;
+}
+
+.web-signup-strength-warning:hover {
+    cursor: pointer;
+}

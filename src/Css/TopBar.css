@@ -1,0 +1,16 @@
+.web-topbar {
+    position: relative;
+    height: 65px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.web-topbar-divider {
+    height: 2px;
+    width: 100%;
+    bottom: 0;
+    position: absolute;
+    background-color: #057EFF;
+}

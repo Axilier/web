@@ -4,8 +4,9 @@ import { useState } from "react";
 import { Button, Github, Google, Key, Mail, TextBox, Tickbox } from "core";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-import Logo from "../Assets/Logo";
 import "../Css/Login.css";
+import "../Css/Account.css";
+import TopBar from "./TopBar";
 
 const Login = () => {
     const [email, setEmail] = useState("");
@@ -37,13 +38,9 @@ const Login = () => {
     }
 
     return (
-        <div className={"login-main"}>
-            <div className={"login-topbar"}>
-                <Logo />
-                <Button label={"Contact"} variant={"text"} type={"tertiary"} />
-                <div className={"login-divider"} />
-            </div>
-            <div className={"login-main-body"}>
+        <div className={"web-account-main"}>
+            <TopBar />
+            <div className={"web-account-main-body"}>
                 <h2>Welcome Back</h2>
                 <TextBox
                     prefixComponent={<Mail />}
@@ -64,8 +61,8 @@ const Login = () => {
                     type={"password"}
                     onChange={(value) => setPassword(value)}
                 />
-                <div className={"login-lower-controls"}>
-                    <div className={"login-remember-me"}>
+                <div className={"web-login-lower-controls"}>
+                    <div className={"web-login-remember-me"}>
                         <Tickbox
                             ticked={false}
                             style={{ marginRight: "3px" }}
@@ -73,7 +70,7 @@ const Login = () => {
                         Remember me
                     </div>
                     <Button
-                        className={"login-forgot-password"}
+                        className={"web-login-forgot-password"}
                         label={"Forgot your password?"}
                         variant={"text"}
                         type={"tertiary"}
@@ -86,25 +83,25 @@ const Login = () => {
                     onClick={() => login()}
                 />
                 {error}
-                <div className={"login-body-divider"}>
-                    <div className={"login-body-divider-bar"} />
-                    <div className={"login-body-divider-text"}>OR</div>
-                    <div className={"login-body-divider-bar"} />
+                <div className={"web-account-body-divider"}>
+                    <div className={"web-account-body-divider-bar"} />
+                    <div className={"web-account-body-divider-text"}>OR</div>
+                    <div className={"web-account-body-divider-bar"} />
                 </div>
                 <Button
                     size={"large"}
                     label={"Sign In with google"}
                     buttonIcon={<Google />}
-                    className={"login-other-options"}
+                    className={"web-account-other-options"}
                 />
                 <Button
                     size={"large"}
                     label={"Sign In with Github"}
-                    className={"login-other-options"}
+                    className={"web-account-other-options"}
                     buttonIcon={<Github />}
                     buttonColor={"#1B1817"}
                 />
-                <div className={"login-sign-up"}>
+                <div className={"web-account-change-page"}>
                     No account yet?
                     <Button
                         label={"Sign Up"}
@@ -114,6 +111,7 @@ const Login = () => {
                             margin: "0 4px",
                             lineHeight: 1.1,
                         }}
+                        onClick={() => history.push("/signup")}
                     />
                     here
                 </div>
