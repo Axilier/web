@@ -1,0 +1,85 @@
+.login-main {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-topbar {
+    position: relative;
+    height: 65px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.login-divider {
+    height: 2px;
+    width: 100%;
+    bottom: 0;
+    position: absolute;
+    background-color: #057EFF;
+}
+
+.login-main-body {
+    font-family: "IBM Plex Sans", serif;
+    position: relative;
+    margin: 100px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.login-forgot-password {
+    font-size: 14px;
+    text-decoration: underline;
+    color: #BEBEBE;
+}
+
+.login-lower-controls {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.login-remember-me {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 10px;
+    font-size: 14px;
+}
+
+.login-body-divider {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+}
+
+.login-body-divider-bar {
+    background-color: #BEBEBE;
+    width: 100%;
+    height: 2px;
+}
+
+.login-body-divider-text {
+    padding: 0 8px;
+    color: #BEBEBE;
+    vertical-align: center;
+}
+
+.login-sign-up {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+}
+
+.login-other-options {
+    font-weight: bold;
+    margin: 10px 0;
+    font-size: 16px;
+}

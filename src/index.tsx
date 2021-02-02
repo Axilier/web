@@ -4,7 +4,9 @@ import "./Css/index.css";
 import BuildScreen from "build-screen";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import * as serviceWorker from "./serviceWorker";
-import { Homepage } from "./Components";
+import { Homepage, Login } from "./Components";
+import Account from "./Components/Account";
+import FourOFour from "./Components/FourOFour";
 
 ReactDOM.render(
     <BrowserRouter basename={"/"}>
@@ -15,8 +17,14 @@ ReactDOM.render(
             <Route exact path={"/build"}>
                 <BuildScreen />
             </Route>
-            <Route>
-                <div>error</div>
+            <Route exact path={"/login"}>
+                <Login />
+            </Route>
+            <Route exact path={"/account"}>
+                <Account />
+            </Route>
+            <Route path={"*"}>
+                <FourOFour />
             </Route>
         </Switch>
     </BrowserRouter>,
