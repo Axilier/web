@@ -12,11 +12,7 @@ import Logo from "../Assets/Logo";
 const Homepage = () => {
     const history = useHistory();
     useEffect(() => {
-        axios
-            .get("http://localhost:4000/getUser", { withCredentials: true })
-            .then((res) => {
-                console.log(res);
-            });
+        axios.get("http://localhost:4000/getUser", { withCredentials: true });
     });
 
     return (

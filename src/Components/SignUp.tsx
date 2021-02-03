@@ -92,9 +92,7 @@ const SignUp = () => {
                             history.push("/account");
                         }
                     },
-                    () => {
-                        console.log("something went wrong");
-                    }
+                    () => {}
                 );
         }
     }

@@ -10,7 +10,6 @@ export default function Background() {
     }
 
     function showElement(id: string) {
-        console.log(id);
         const element = document.getElementById(id);
         if (element) element.style.display = "inline";
     }
