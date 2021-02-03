@@ -1,30 +1,56 @@
 // @flow
 import * as React from "react";
-import Logo from "../../Assets/Logo";
-import "../../Css/Homescreen.css";
-import { Button } from "../index";
-import Circle from "../../Assets/CircleForm.svg";
-import City from "../../Assets/PhoneMapCircle.svg";
+import { useEffect } from "react";
+import { Button } from "core";
+import axios from "axios";
+import "../Css/Homescreen.css";
+import { useHistory } from "react-router-dom";
+import Circle from "../Assets/CircleForm.svg";
+import City from "../Assets/PhoneMapCircle.svg";
+import Logo from "../Assets/Logo";
 
 const Homepage = () => {
+    const history = useHistory();
+    useEffect(() => {
+        axios
+            .get("http://localhost:4000/getUser", { withCredentials: true })
+            .then((res) => {
+                console.log(res);
+            });
+    });
+
     return (
         <>
             <div className={"top-bar"}>
                 <Logo />
                 <div className={"top-bar-item"}>
-                    <Button title={"Product"} variant={"Text"} />
-                    <Button title={"Resources"} variant={"Text"} />
-                    <Button title={"Contact"} variant={"Text"} />
+                    <Button
+                        label={"Product"}
+                        variant={"text"}
+                        type={"tertiary"}
+                    />
+                    <Button
+                        label={"Resources"}
+                        variant={"text"}
+                        type={"tertiary"}
+                    />
+                    <Button
+                        label={"Contact"}
+                        variant={"text"}
+                        type={"tertiary"}
+                    />
                 </div>
                 <div className={"top-bar-item"}>
                     <Button
-                        title={"Sign Up"}
-                        variant={"Outlined"}
-                        color={"#053FFF"}
-                        textColor={"#053FFF"}
+                        label={"Sign Up"}
+                        variant={"outlined"}
                         className={"btn-slide-left"}
                     />
-                    <Button title={"Login"} variant={"Text"} />
+                    <Button
+                        label={"Login"}
+                        variant={"text"}
+                        onClick={() => history.push("/login")}
+                    />
                 </div>
             </div>
             <div className={"main-body"}>
@@ -53,12 +79,7 @@ const Homepage = () => {
                         <br />
                         with basic QR codes
                     </p>
-                    <Button
-                        title={"Sign Up"}
-                        variant={"Outlined"}
-                        color={"#053FFF"}
-                        textColor={"#053FFF"}
-                    />
+                    <Button label={"Sign Up"} variant={"outlined"} />
                 </div>
             </div>
         </>

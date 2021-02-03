@@ -1,0 +1,17 @@
+.web-strength-bar-main {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    height: 4px;
+    width: 100%;
+}
+
+.web-strength-bar-sub {
+    margin: 0 3px;
+    border-radius: 15px;
+    width: 25%;
+}
+
+.web-strength-bar-margins {
+    width: 10px;
+}

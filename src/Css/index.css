@@ -22,8 +22,3 @@ code {
 ::-webkit-scrollbar {
     display: none;
 }
-
-@font-face {
-    font-family: 'Avenir Next Cyr';
-    src: url("../Assets/Metropolis-SemiBold.otf");
-}

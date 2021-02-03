@@ -1,0 +1,50 @@
+.web-signup-strength-text {
+    display: flex;
+    flex-direction: row;
+    color: #BEBEBE;
+    font-size: 12px;
+    margin: 10px 0 4px 10px;
+    align-self: flex-start;
+    justify-content: center;
+    line-height: 0.8;
+}
+
+.web-signup-email-error {
+    display: flex;
+    align-self: flex-start;
+    align-items: center;
+    margin-left: 10px;
+    font-size: 12px;
+}
+
+.web-signup-strength-warning:hover {
+    cursor: pointer;
+}
+
+.web-signup-strength-notices {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    align-self: flex-start;
+    margin-left: 10px;
+    font-size: 12px;
+}
+
+.web-signup-strength-notices-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.web-signup-strength-notices-col div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 3px;
+}
+
+.web-signup-strength-notices-col div svg {
+    margin-right: 3px;
+    height: 12px;
+    width: 12px;
+}
