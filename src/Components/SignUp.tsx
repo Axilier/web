@@ -79,7 +79,7 @@ const SignUp = () => {
             setEmailValid(true);
             axios
                 .post(
-                    "http://3.10.226.172/register",
+                    "https://api.axilier.com/register",
                     {
                         email,
                         password,
