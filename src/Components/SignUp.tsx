@@ -14,9 +14,9 @@ import {
     TextBox,
 } from "core";
 import { useHistory } from "react-router-dom";
+import axios from "axios";
 import TopBar from "./TopBar";
 import StrengthBar from "./StrengthBar";
-import axios from "axios";
 
 const SignUp = () => {
     // eslint-disable-next-line no-unused-vars
