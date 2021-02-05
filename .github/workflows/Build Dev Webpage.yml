@@ -34,5 +34,5 @@ jobs:
           BRANCH: build
           FOLDER: build
           CLEAN: true
-          CLEAN_EXCLUDE: '["CNAME"]',
+          CLEAN_EXCLUDE: '["CNAME"]'
           TARGET_FOLDER: dev
