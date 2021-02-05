@@ -1,19 +1,17 @@
 // @flow
 import * as React from "react";
-import { useEffect } from "react";
+import { useContext } from "react";
 import { Button } from "core";
-import axios from "axios";
 import "../Css/Homescreen.css";
 import { useHistory } from "react-router-dom";
 import Circle from "../Assets/CircleForm.svg";
 import City from "../Assets/PhoneMapCircle.svg";
 import Logo from "../Assets/Logo";
+import { AppContext } from "../Context";
 
 const Homepage = () => {
     const history = useHistory();
-    useEffect(() => {
-        axios.get("https://api.axilier.com/getUser", { withCredentials: true });
-    });
+    const { user } = useContext(AppContext);
 
     return (
         <>
@@ -37,16 +35,28 @@ const Homepage = () => {
                     />
                 </div>
                 <div className={"top-bar-item"}>
-                    <Button
-                        label={"Sign Up"}
-                        variant={"outlined"}
-                        className={"btn-slide-left"}
-                    />
-                    <Button
-                        label={"Login"}
-                        variant={"text"}
-                        onClick={() => history.push("/login")}
-                    />
+                    {user === {} ? (
+                        <>
+                            <Button
+                                label={"Sign Up"}
+                                variant={"outlined"}
+                                className={"btn-slide-left"}
+                            />
+                            <Button
+                                label={"Login"}
+                                variant={"text"}
+                                onClick={() => history.push("/login")}
+                            />
+                        </>
+                    ) : (
+                        <Button
+                            label={"My Account"}
+                            variant={"contained"}
+                            size={"170px"}
+                            className={"btn-slide-left"}
+                            onClick={() => history.push("/account")}
+                        />
+                    )}
                 </div>
             </div>
             <div className={"main-body"}>

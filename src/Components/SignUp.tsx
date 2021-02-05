@@ -1,8 +1,10 @@
 // @flow
 import * as React from "react";
-import { useState } from "react";
-import "../Css/Account.css";
+import { useContext, useState } from "react";
+import "../Css/Entry.css";
 import "../Css/SignUp.css";
+import { useHistory } from "react-router-dom";
+import axios from "axios";
 import {
     Button,
     Cross,
@@ -13,9 +15,8 @@ import {
     Question,
     TextBox,
 } from "core";
-import { useHistory } from "react-router-dom";
-import axios from "axios";
 import TopBar from "./TopBar";
+import { AppContext } from "../Context";
 import StrengthBar from "./StrengthBar";
 
 const SignUp = () => {
@@ -27,6 +28,7 @@ const SignUp = () => {
     const [passwordStrength, setPasswordStrength] = useState(0);
 
     const history = useHistory();
+    const { apiUrl } = useContext(AppContext);
 
     function checkPassword(input: {
         passwordInput: string;
@@ -76,10 +78,11 @@ const SignUp = () => {
         if (!checkEmail()) {
             setEmailValid(false);
         } else {
+            if (passwordStrength < 4) return;
             setEmailValid(true);
             axios
                 .post(
-                    "https://api.axilier.com/register",
+                    `${apiUrl}/register`,
                     {
                         email,
                         password,
@@ -98,9 +101,9 @@ const SignUp = () => {
     }
 
     return (
-        <div className={"web-account-main"}>
+        <div className={"web-entry-main"}>
             <TopBar />
-            <div className={"web-account-main-body"}>
+            <div className={"web-entry-main-body"}>
                 <h2>Welcome to Axilier</h2>
                 <TextBox
                     prefixComponent={<Mail />}
@@ -118,7 +121,7 @@ const SignUp = () => {
                         style={{
                             color: "#F01919",
                         }}
-                        className={"web-signup-email-error"}
+                        className={"web-entry-error"}
                     >
                         <Cross
                             iconColor={"#F01919"}
@@ -252,25 +255,25 @@ const SignUp = () => {
                     variant={"contained"}
                     onClick={() => signUp()}
                 />
-                <div className={"web-account-body-divider"}>
-                    <div className={"web-account-body-divider-bar"} />
-                    <div className={"web-account-body-divider-text"}>OR</div>
-                    <div className={"web-account-body-divider-bar"} />
+                <div className={"web-entry-body-divider"}>
+                    <div className={"web-entry-body-divider-bar"} />
+                    <div className={"web-entry-body-divider-text"}>OR</div>
+                    <div className={"web-entry-body-divider-bar"} />
                 </div>
                 <Button
                     size={"large"}
                     label={"Sign Up with google"}
                     buttonIcon={<Google />}
-                    className={"web-account-other-options"}
+                    className={"web-entry-other-options"}
                 />
                 <Button
                     size={"large"}
                     label={"Sign Up with Github"}
-                    className={"web-account-other-options"}
+                    className={"web-entry-other-options"}
                     buttonIcon={<Github />}
                     buttonColor={"#1B1817"}
                 />
-                <div className={"web-account-change-page"}>
+                <div className={"web-entry-change-page"}>
                     Already have an account?
                     <Button
                         label={"Login"}

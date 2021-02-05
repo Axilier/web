@@ -9,14 +9,6 @@
     line-height: 0.8;
 }
 
-.web-signup-email-error {
-    display: flex;
-    align-self: flex-start;
-    align-items: center;
-    margin-left: 10px;
-    font-size: 12px;
-}
-
 .web-signup-strength-warning:hover {
     cursor: pointer;
 }
