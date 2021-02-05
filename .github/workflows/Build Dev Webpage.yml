@@ -1,11 +1,11 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Webpage Build
+name: Dev Webpage Build
 
 on:
   push:
     branches:
-      - master
+      - dev
   repository_dispatch:
     types: [ build ]
 
@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          ref: 'master'
+          ref: 'dev'
       - uses: webfactory/ssh-agent@v0.4.1
         with:
           ssh-private-key: ${{ secrets.SSH_P_KEY }}
@@ -34,4 +34,5 @@ jobs:
           BRANCH: build
           FOLDER: build
           CLEAN: true
-          CLEAN_EXCLUDE: '["CNAME","dev"]'
+          CLEAN_EXCLUDE: '["CNAME"]',
+          TARGET_FOLDER: dev
