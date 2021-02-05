@@ -32,9 +32,7 @@ function Main() {
 
     return (
         <AppContext.Provider value={{ user, apiUrl, setUser }}>
-            <BrowserRouter
-                basename={process.env.NODE_ENV === "development" ? "/dev" : "/"}
-            >
+            <BrowserRouter basename={"/"}>
                 {isLoaded ? (
                     <Switch>
                         <Route exact path={"/"}>
