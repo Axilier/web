@@ -14,7 +14,7 @@ const Account = () => {
                     className={"web-account-logo"}
                 />
                 <TabMenu
-                    onChange={(value) => console.log(value)}
+                    onChange={(value) => value.toString()}
                     direction={"vertical"}
                     tabNotSelectedColor={"#1E4EE5"}
                     tabSelectedColor={"#1B44C4"}

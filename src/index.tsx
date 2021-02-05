@@ -24,10 +24,8 @@ function Main() {
             .then((res) => {
                 setUser(res.data);
                 setLoaded(true);
-                console.log("run");
             })
             .catch(() => {
-                console.log("run1");
                 setLoaded(true);
             });
     }, []);
