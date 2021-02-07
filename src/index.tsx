@@ -10,7 +10,7 @@ import { AppContext } from "./Context";
 import * as serviceWorker from "./serviceWorker";
 
 function Main() {
-    const [user, setUser] = useState();
+    const [user, setUser] = useState<{} | null>(null);
     const [isLoaded, setLoaded] = useState(false);
 
     const apiUrl =
@@ -22,7 +22,9 @@ function Main() {
         axios
             .get(`${apiUrl}/getUser`, { withCredentials: true })
             .then((res) => {
-                setUser(res.data);
+                if (res.data !== "") {
+                    setUser(res.data);
+                }
                 setLoaded(true);
             })
             .catch(() => {

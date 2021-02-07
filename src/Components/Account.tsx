@@ -1,7 +1,15 @@
 // @flow
 import * as React from "react";
 import "../Css/Account.css";
-import { AllFiles, Favourites, Recent, Tab, TabMenu } from "core";
+import {
+    AllFiles,
+    Favourites,
+    Recent,
+    Search,
+    Tab,
+    TabMenu,
+    TextBox,
+} from "core";
 import WhiteLogo from "../Assets/whiteLogo.svg";
 
 const Account = () => {
@@ -36,7 +44,16 @@ const Account = () => {
             </div>
             <div className={"web-account-main-body"}>
                 <div className={"web-account-topbar"}>
-                    <input />
+                    <TextBox
+                        variant={"bare"}
+                        size={"large"}
+                        prefixComponent={<Search iconColor={"#C4C6CA"} />}
+                        placeholder={"Search by: filename, tag, folder...."}
+                        inputStyle={{
+                            color: "#8D9097",
+                        }}
+                    />
+                    <div className={"web-account-dropdown"} />
                 </div>
             </div>
         </div>

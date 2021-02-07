@@ -35,7 +35,7 @@ const Homepage = () => {
                     />
                 </div>
                 <div className={"top-bar-item"}>
-                    {user === {} ? (
+                    {user === null ? (
                         <>
                             <Button
                                 label={"Sign Up"}
