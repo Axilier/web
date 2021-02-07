@@ -7,7 +7,7 @@ on:
     branches:
       - master
   repository_dispatch:
-    types: [build]
+    types: [ build ]
 
 jobs:
   build:
@@ -26,7 +26,7 @@ jobs:
       - name: install deps and predeploy
         run: |
           yarn install
-          yarn predeploy
+          yarn build
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@3.7.1
         with:

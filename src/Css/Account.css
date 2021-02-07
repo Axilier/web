@@ -26,10 +26,21 @@
 }
 
 .web-account-topbar {
+    position: relative;
     display: flex;
     flex-direction: row;
     background-color: white;
     box-shadow: 0 3px 6px #00000029;
     height: 70px;
     padding: 0 65px;
+    min-width: 0;
+}
+
+.web-account-dropdown {
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    bottom: 0;
+    right: 0;
+    background-color: #057eff;
 }
