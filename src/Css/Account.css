@@ -33,14 +33,65 @@
     box-shadow: 0 3px 6px #00000029;
     height: 70px;
     padding: 0 65px;
-    min-width: 0;
+    justify-content: space-between;
 }
 
 .web-account-dropdown {
     position: absolute;
-    height: 20px;
-    width: 20px;
-    bottom: 0;
-    right: 0;
-    background-color: #057eff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 140px;
+    width: 220px;
+    top: -20px;
+    right: 20px;
+    background-color: white;
+    opacity: 0;
+    border: 1px solid #dfdfdf;
+    transition: all .2s ease-in;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .1);
+    border-radius: 3px;
+    z-index: 10;
+}
+
+.web-account-dropdown-open {
+    opacity: 1;
+    top: 0;
+}
+
+.web-account-dropdown-tile {
+    text-align: left;
+    padding: 8px 15px;
+    background-color: white;
+    font-size: 16px;
+}
+
+.web-account-dropdown-tile:hover {
+    background-color: #F6F6F6;
+    cursor: pointer;
+}
+
+.web-account-dropdown-profile {
+    display: flex;
+    flex-direction: row;
+    padding: 15px 15px;
+    border-bottom: 1px solid #E4E4E4;
+}
+
+.web-account-dropdown-profile-badge {
+    height: 30px;
+    width: 30px;
+    background-color: #E4E4E4;
+    border-radius: 15px;
+}
+
+.web-account-content-area {
+    position: relative;
+}
+
+.web-account-dropdown-profile-info p {
+    font-size: 12px;
+    margin: 0 0 0 5px;
+    color: #828282;
+    text-transform: capitalize;
 }

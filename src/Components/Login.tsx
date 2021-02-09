@@ -115,6 +115,7 @@ const Login = () => {
                     />
                 </div>
                 <Button
+                    // TODO make button have type that can be submit to make enter key work
                     style={{ margin: "10px 0" }}
                     label={"login"}
                     variant={"contained"}

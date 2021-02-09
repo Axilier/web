@@ -3,7 +3,6 @@ html {
 }
 
 body {
-    min-width: 1020px;
     overflow: scroll;
     overflow-x: hidden;
     margin: 0;
