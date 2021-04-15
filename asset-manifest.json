@@ -5,11 +5,11 @@
     "main.js.map": "/static/js/main.0ba959c6.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.b271c7af.js",
     "runtime-main.js.map": "/static/js/runtime-main.b271c7af.js.map",
-    "static/js/2.6e782584.chunk.js": "/static/js/2.6e782584.chunk.js",
-    "static/js/2.6e782584.chunk.js.map": "/static/js/2.6e782584.chunk.js.map",
+    "static/js/2.407933df.chunk.js": "/static/js/2.407933df.chunk.js",
+    "static/js/2.407933df.chunk.js.map": "/static/js/2.407933df.chunk.js.map",
     "index.html": "/index.html",
     "static/css/main.7054c92b.chunk.css.map": "/static/css/main.7054c92b.chunk.css.map",
-    "static/js/2.6e782584.chunk.js.LICENSE.txt": "/static/js/2.6e782584.chunk.js.LICENSE.txt",
+    "static/js/2.407933df.chunk.js.LICENSE.txt": "/static/js/2.407933df.chunk.js.LICENSE.txt",
     "static/media/CircleForm.5687544a.svg": "/static/media/CircleForm.5687544a.svg",
     "static/media/PageNotFound.79da0172.svg": "/static/media/PageNotFound.79da0172.svg",
     "static/media/PhoneMapCircle.16ff1356.svg": "/static/media/PhoneMapCircle.16ff1356.svg",
@@ -17,7 +17,7 @@
   },
   "entrypoints": [
     "static/js/runtime-main.b271c7af.js",
-    "static/js/2.6e782584.chunk.js",
+    "static/js/2.407933df.chunk.js",
     "static/css/main.7054c92b.chunk.css",
     "static/js/main.0ba959c6.chunk.js"
   ]
