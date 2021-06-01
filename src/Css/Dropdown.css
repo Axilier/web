@@ -1,0 +1,57 @@
+.web-dropdown {
+    position: relative;
+}
+
+.web-dropdown-main {
+    display: flex;
+    align-items: center;
+    border: 2px solid rgb(5, 126, 255);
+    border-radius: 5px;
+    padding: 0 20px;
+    justify-content: space-between;
+    transition: background-color .5s linear;
+}
+
+.web-dropdown-main:hover{
+    cursor: pointer;
+    background-color: #F5F5F5;
+}
+
+.drop-arrow {
+    justify-self: flex-end;
+    width: 12px;
+}
+
+.drop-text-box-label {
+    display: flex;
+    flex-direction: row;
+    margin-right: 5px;
+    font-size: 13px;
+    text-transform: capitalize;
+}
+
+.drop-required-icon {
+    color: #FF0000;
+    margin-left: 3px;
+}
+
+.web-dropdown-open-menu {
+    z-index: 999;
+    position: absolute;
+    margin-top: 2px;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .2);
+}
+
+.web-dropdown-open-menu .option {
+    height: 35px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+}
+
+.web-dropdown-open-menu .option:hover {
+    background-color: #F5F5F5;
+    cursor: pointer;
+}

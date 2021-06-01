@@ -1,10 +1,8 @@
 // @flow
-import * as React from "react";
-import { useContext, useState } from "react";
-import "../Css/Entry.css";
-import "../Css/SignUp.css";
-import { useHistory } from "react-router-dom";
-import axios from "axios";
+import React, { useEffect, useState } from 'react';
+import '../Css/Entry.css';
+import '../Css/SignUp.css';
+import { useHistory, useLocation } from 'react-router-dom';
 import {
     Button,
     Cross,
@@ -14,21 +12,30 @@ import {
     Mail,
     Question,
     TextBox,
-} from "core";
-import TopBar from "./TopBar";
-import { AppContext } from "../Context";
-import StrengthBar from "./StrengthBar";
+} from 'core';
+import { useQuery } from 'react-query';
+import TopBar from './TopBar';
+import StrengthBar from './StrengthBar';
+import { googleEntry, localRegister } from '../Requests';
 
 const SignUp = () => {
     // eslint-disable-next-line no-unused-vars
     const [emailValid, setEmailValid] = useState(true);
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [reTypedPassword, setReTypedPassword] = useState("");
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [reTypedPassword, setReTypedPassword] = useState('');
     const [passwordStrength, setPasswordStrength] = useState(0);
+    const [errorCode, setErrorCode] = useState('');
 
     const history = useHistory();
-    const { apiUrl } = useContext(AppContext);
+
+    const location = useLocation();
+
+    useEffect(() => {
+        setErrorCode(
+            new URLSearchParams(location.search).get('err') || errorCode || ''
+        );
+    });
 
     function checkPassword(input: {
         passwordInput: string;
@@ -51,10 +58,10 @@ const SignUp = () => {
         if (passwordInput !== retypedInput) {
             strength = 0;
         }
-        if (passwordInput === "" || retypedInput === "") {
+        if (passwordInput === '' || retypedInput === '') {
             strength = 0;
         }
-        if (passwordInput.length <= 8) {
+        if (passwordInput.length < 8) {
             strength = 0;
         }
         setPasswordStrength(strength);
@@ -64,14 +71,18 @@ const SignUp = () => {
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email); // DOC not perfect but will do basic validation, do email validation on server
     }
 
+    function googleSignUp() {
+        googleEntry('entry');
+    }
+
     /* eslint-disable */
 
     function passwordCheck(check: boolean): string {
-        return password === "" || reTypedPassword === ""
-            ? "#BEBEBE"
+        return password === '' || reTypedPassword === ''
+            ? '#BEBEBE'
             : check
-            ? "#1EB932"
-            : "#F01919";
+            ? '#1EB932'
+            : '#F01919';
     }
 
     function signUp() {
@@ -80,38 +91,32 @@ const SignUp = () => {
         } else {
             if (passwordStrength < 4) return;
             setEmailValid(true);
-            axios
-                .post(
-                    `${apiUrl}/register`,
-                    {
-                        email,
-                        password,
-                    },
-                    { withCredentials: true }
-                )
-                .then(
-                    (res) => {
-                        if (res.status === 200) {
-                            history.push("/account");
-                        }
-                    },
-                    () => {}
-                );
+            const { error: registerError } = useQuery('localRegister', () =>
+                localRegister(email, password)
+            );
+            if (registerError) {
+                console.log(registerError);
+                setErrorCode(registerError);
+            } else {
+                history.push('/account');
+            }
         }
     }
 
+    console.log(errorCode);
+
     return (
-        <div className={"web-entry-main"}>
+        <div className={'web-entry-main'}>
             <TopBar />
-            <div className={"web-entry-main-body"}>
+            <div className={'web-entry-main-body'}>
                 <h2>Welcome to Axilier</h2>
                 <TextBox
                     prefixComponent={<Mail />}
-                    placeholder={"Enter your email address"}
-                    variant={"outlined"}
-                    size={"large"}
+                    placeholder={'Enter your email address'}
+                    variant={'outlined'}
+                    size={'large'}
                     required
-                    label={"Email"}
+                    label={'Email'}
                     onChange={(value) => {
                         setEmail(value);
                     }}
@@ -119,25 +124,25 @@ const SignUp = () => {
                 {!emailValid ? (
                     <div
                         style={{
-                            color: "#F01919",
+                            color: '#F01919',
                         }}
-                        className={"web-entry-error"}
+                        className={'web-entry-error'}
                     >
                         <Cross
-                            iconColor={"#F01919"}
-                            style={{ marginRight: "3px" }}
+                            iconColor={'#F01919'}
+                            style={{ marginRight: '3px' }}
                         />
                         Invalid Email Address
                     </div>
                 ) : null}
                 <TextBox
                     prefixComponent={<Key />}
-                    placeholder={"Enter your password"}
-                    variant={"outlined"}
-                    size={"large"}
+                    placeholder={'Enter your password'}
+                    variant={'outlined'}
+                    size={'large'}
                     required
-                    label={"Password"}
-                    type={"password"}
+                    label={'Password'}
+                    type={'password'}
                     onChange={(value) => {
                         setPassword(value);
                         checkPassword({
@@ -148,12 +153,12 @@ const SignUp = () => {
                 />
                 <TextBox
                     prefixComponent={<Key />}
-                    placeholder={"Re-Enter your password"}
-                    variant={"outlined"}
-                    size={"large"}
+                    placeholder={'Re-Enter your password'}
+                    variant={'outlined'}
+                    size={'large'}
                     required
-                    label={"Re-Enter Password"}
-                    type={"password"}
+                    label={'Re-Enter Password'}
+                    type={'password'}
                     onChange={(value) => {
                         setReTypedPassword(value);
                         checkPassword({
@@ -164,10 +169,10 @@ const SignUp = () => {
                 />
 
                 <div
-                    className={"web-signup-strength-notices"}
-                    style={{ color: "#BEBEBE" }}
+                    className={'web-signup-strength-notices'}
+                    style={{ color: '#BEBEBE' }}
                 >
-                    <div className={"web-signup-strength-notices-col"}>
+                    <div className={'web-signup-strength-notices-col'}>
                         <div
                             style={{
                                 color: passwordCheck(
@@ -201,11 +206,11 @@ const SignUp = () => {
                                 iconColor={passwordCheck(
                                     /[A-Z]/.test(password)
                                 )}
-                            />{" "}
+                            />{' '}
                             Contains a capital letter?
                         </div>
                     </div>
-                    <div className={"web-signup-strength-notices-col"}>
+                    <div className={'web-signup-strength-notices-col'}>
                         <div
                             style={{
                                 color: passwordCheck(/[0-9]/.test(password)),
@@ -215,7 +220,7 @@ const SignUp = () => {
                                 iconColor={passwordCheck(
                                     /[0-9]/.test(password)
                                 )}
-                            />{" "}
+                            />{' '}
                             Contains a number?
                         </div>
                         <div
@@ -227,63 +232,87 @@ const SignUp = () => {
                                 iconColor={passwordCheck(
                                     /[^\w\s]/.test(password)
                                 )}
-                            />{" "}
+                            />{' '}
                             Contains a symbol?
                         </div>
                     </div>
                 </div>
 
-                {password === "" && reTypedPassword === "" ? (
-                    <div className={"web-signup-strength-text"}>
+                {password === '' && reTypedPassword === '' ? (
+                    <div className={'web-signup-strength-text'}>
                         Enter your password above to calculate strength
                     </div>
                 ) : passwordStrength < 4 ? (
-                    <div className={"web-signup-strength-text"}>
+                    <div className={'web-signup-strength-text'}>
                         Your password is too weak please fix the red issues
                         above
                     </div>
                 ) : (
-                    <div className={"web-signup-strength-text"}>
+                    <div className={'web-signup-strength-text'}>
                         Your password is strong enough you can continue
                     </div>
                 )}
-
                 <StrengthBar currentStrength={passwordStrength} />
+
+                {errorCode !== '' ? (
+                    <div
+                        style={{
+                            color: '#F01919',
+                            marginTop: '10px',
+                            wordWrap: 'break-word',
+                            width: '376px',
+                        }}
+                        className={'web-entry-error'}
+                    >
+                        <Cross
+                            iconColor={'#F01919'}
+                            style={{ marginRight: '3px', width: '20px' }}
+                        />
+                        {errorCode === '401.Google'
+                            ? 'Account already exists with this email, ' +
+                              'but it has no google account connected, ' +
+                              'connect this email account in the settings' +
+                              ' of the existing account'
+                            : 'Something went wrong please try again'}
+                    </div>
+                ) : null}
+
                 <Button
-                    style={{ margin: "10px 0" }}
-                    label={"sign up"}
-                    variant={"contained"}
+                    style={{ margin: '10px 0' }}
+                    label={'sign up'}
+                    variant={'contained'}
                     onClick={() => signUp()}
                 />
-                <div className={"web-entry-body-divider"}>
-                    <div className={"web-entry-body-divider-bar"} />
-                    <div className={"web-entry-body-divider-text"}>OR</div>
-                    <div className={"web-entry-body-divider-bar"} />
+                <div className={'web-entry-body-divider'}>
+                    <div className={'web-entry-body-divider-bar'} />
+                    <div className={'web-entry-body-divider-text'}>OR</div>
+                    <div className={'web-entry-body-divider-bar'} />
                 </div>
                 <Button
-                    size={"large"}
-                    label={"Sign Up with google"}
+                    size={'large'}
+                    label={'Sign Up with google'}
                     buttonIcon={<Google />}
-                    className={"web-entry-other-options"}
+                    className={'web-entry-other-options'}
+                    onClick={googleSignUp}
                 />
                 <Button
-                    size={"large"}
-                    label={"Sign Up with Github"}
-                    className={"web-entry-other-options"}
+                    size={'large'}
+                    label={'Sign Up with Github'}
+                    className={'web-entry-other-options'}
                     buttonIcon={<Github />}
-                    buttonColor={"#1B1817"}
+                    buttonColor={'#1B1817'}
                 />
-                <div className={"web-entry-change-page"}>
+                <div className={'web-entry-change-page'}>
                     Already have an account?
                     <Button
-                        label={"Login"}
-                        variant={"text"}
+                        label={'Login'}
+                        variant={'text'}
                         style={{
-                            textDecoration: "underline",
-                            margin: "0 4px",
+                            textDecoration: 'underline',
+                            margin: '0 4px',
                             lineHeight: 1.1,
                         }}
-                        onClick={() => history.push("/login")}
+                        onClick={() => history.push('/login')}
                     />
                     here
                 </div>

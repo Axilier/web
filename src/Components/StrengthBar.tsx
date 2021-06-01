@@ -1,7 +1,6 @@
 // @flow
-import * as React from "react";
-import { useEffect, useState } from "react";
-import "../Css/StengthBar.css";
+import React, { useEffect, useState } from 'react';
+import '../Css/StengthBar.css';
 
 type Props = {
     currentStrength: number;
@@ -15,17 +14,17 @@ const StrengthBar = ({ currentStrength }: Props) => {
     const calColor = () => {
         switch (currentStrength) {
             case 0:
-                return "#E6E6E6";
+                return '#E6E6E6';
             case 1:
-                return "#E01414";
+                return '#E01414';
             case 2:
-                return "#E07C14";
+                return '#E07C14';
             case 3:
-                return "#E0A914";
+                return '#E0A914';
             case 4:
-                return "#37B411";
+                return '#37B411';
             default:
-                return "#E6E6E6";
+                return '#E6E6E6';
         }
     };
 
@@ -34,10 +33,10 @@ const StrengthBar = ({ currentStrength }: Props) => {
         for (let i = 0; i < 4; i += 1) {
             barElements.push(
                 <div
-                    className={"web-strength-bar-sub"}
+                    className={'web-strength-bar-sub'}
                     style={{
                         backgroundColor:
-                            i < currentStrength ? calColor() : "#E6E6E6",
+                            i < currentStrength ? calColor() : '#E6E6E6',
                     }}
                 />
             );
@@ -46,10 +45,10 @@ const StrengthBar = ({ currentStrength }: Props) => {
     };
 
     return (
-        <div className={"web-strength-bar-main"}>
-            <div className={"web-strength-bar-margins"} />
+        <div className={'web-strength-bar-main'}>
+            <div className={'web-strength-bar-margins'} />
             {bars()}
-            <div className={"web-strength-bar-margins"} />
+            <div className={'web-strength-bar-margins'} />
         </div>
     );
 };

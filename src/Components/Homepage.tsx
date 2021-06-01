@@ -1,82 +1,84 @@
 // @flow
-import * as React from "react";
-import { useContext } from "react";
-import { Button } from "core";
-import "../Css/Homescreen.css";
-import { useHistory } from "react-router-dom";
-import Circle from "../Assets/CircleForm.svg";
-import City from "../Assets/PhoneMapCircle.svg";
-import Logo from "../Assets/Logo";
-import { AppContext } from "../Context";
+import React from 'react';
+import { Button } from 'core';
+import '../Css/Homescreen.css';
+import { useHistory } from 'react-router-dom';
+import Circle from '../Assets/CircleForm.svg';
+import City from '../Assets/PhoneMapCircle.svg';
+import Logo from '../Assets/Logo';
+import { User } from '../Types';
 
-const Homepage = () => {
+const Homepage = ({ user }: { user: User | null }) => {
     const history = useHistory();
-    const { user } = useContext(AppContext);
+
+    // A modern solution
+    // <br />
+    // to a persistent problem
 
     return (
         <>
-            <div className={"top-bar"}>
+            <div className={'top-bar'}>
                 <Logo />
-                <div className={"top-bar-item"}>
+                <div className={'top-bar-item'}>
                     <Button
-                        label={"Product"}
-                        variant={"text"}
-                        type={"tertiary"}
+                        label={'Product'}
+                        variant={'text'}
+                        type={'tertiary'}
                     />
                     <Button
-                        label={"Resources"}
-                        variant={"text"}
-                        type={"tertiary"}
+                        label={'Resources'}
+                        variant={'text'}
+                        type={'tertiary'}
                     />
                     <Button
-                        label={"Contact"}
-                        variant={"text"}
-                        type={"tertiary"}
+                        label={'Contact'}
+                        variant={'text'}
+                        type={'tertiary'}
                     />
                 </div>
-                <div className={"top-bar-item"}>
-                    {user === null ? (
+                <div className={'top-bar-item'}>
+                    {!user ? (
                         <>
                             <Button
-                                label={"Sign Up"}
-                                variant={"outlined"}
-                                className={"btn-slide-left"}
+                                label={'Sign Up'}
+                                variant={'contained'}
+                                className={'btn-slide-left'}
+                                size={'130px'}
+                                onClick={() => history.push('/signup')}
                             />
                             <Button
-                                label={"Login"}
-                                variant={"text"}
-                                onClick={() => history.push("/login")}
+                                label={'Login'}
+                                variant={'text'}
+                                onClick={() => history.push('/login')}
                             />
                         </>
                     ) : (
                         <Button
-                            label={"My Account"}
-                            variant={"contained"}
-                            size={"170px"}
-                            className={"btn-slide-left"}
-                            onClick={() => history.push("/account")}
+                            label={'My Account'}
+                            variant={'contained'}
+                            size={'170px'}
+                            className={'btn-slide-left'}
+                            onClick={() => history.push('/account')}
                         />
                     )}
                 </div>
             </div>
-            <div className={"main-body"}>
-                <div className={"main-body-item"}>
-                    <img src={Circle} alt={""} style={{ width: "60%" }} />
+            <div className={'main-body'}>
+                <div className={'main-body-item'}>
+                    <img src={Circle} alt={''} style={{ width: '60%' }} />
                 </div>
-                <div className={"main-body-item"}>
+                <div className={'main-body-item'}>
                     <img
                         src={City}
-                        alt={"phone city"}
-                        style={{ width: "60%", paddingTop: "200px" }}
+                        alt={'phone city'}
+                        style={{ width: '60%', paddingTop: '200px' }}
                     />
                 </div>
-                <div className={"floating-text"}>
-                    <p className={"floating-text-title"}>
-                        A modern solution
-                        <br />
-                        to a persistent problem
+                <div className={'floating-text'}>
+                    <p className={'floating-text-title'}>
+                        A WORK IN PROGRESS DONT ENTER ANY INFO
                     </p>
-                    <p className={"floating-text-small"}>
+                    <p className={'floating-text-small'}>
                         Create, Connect, Distribute maps among your
                         <br />
                         employees and or customers using your
@@ -85,7 +87,7 @@ const Homepage = () => {
                         <br />
                         with basic QR codes
                     </p>
-                    <Button label={"Sign Up"} variant={"outlined"} />
+                    <Button label={'Sign Up'} variant={'outlined'} />
                 </div>
             </div>
         </>

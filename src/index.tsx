@@ -1,89 +1,25 @@
-import * as React from "react";
-import { useEffect, useState } from "react";
-import ReactDOM from "react-dom";
-import "./Css/index.css";
-import BuildScreen from "build-screen";
-import axios from "axios";
-import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
-import { Account, FourOFour, Homepage, Login, SignUp } from "./Components";
-import { AppContext } from "./Context";
-import * as serviceWorker from "./serviceWorker";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './Css/index.css';
+import { QueryClient, QueryClientProvider, setLogger } from 'react-query';
+import * as serviceWorker from './serviceWorker';
+import Routing from './Routing';
 
 function Main() {
-    const [user, setUser] = useState<{} | null>(null);
-    const [isLoaded, setLoaded] = useState(false);
+    const client = new QueryClient();
 
-    const apiUrl =
-        process.env.NODE_ENV === "development"
-            ? "http://localhost:4000"
-            : "https://api.axilier.com";
-
-    useEffect(() => {
-        axios
-            .get(`${apiUrl}/getUser`, { withCredentials: true })
-            .then((res) => {
-                if (res.data !== "") {
-                    setUser(res.data);
-                }
-                setLoaded(true);
-            })
-            .catch(() => {
-                setLoaded(true);
-            });
-    }, []);
+    setLogger({
+        log: () => {},
+        warn: () => {},
+        error: window.console.error,
+    });
 
     return (
-        <AppContext.Provider value={{ user, apiUrl, setUser }}>
-            <BrowserRouter basename={"/"}>
-                {isLoaded ? (
-                    <Switch>
-                        <Route exact path={"/"}>
-                            <Homepage />
-                        </Route>
-                        <Route exact path={"/build"}>
-                            {user ? (
-                                <BuildScreen />
-                            ) : (
-                                <Redirect to={"/login"} />
-                            )}
-                        </Route>
-                        <Route exact path={"/account"}>
-                            {user ? <Account /> : <Redirect to={"/login"} />}
-                        </Route>
-                        <Route exact path={"/login"}>
-                            {user ? <Redirect to={"/account"} /> : <Login />}
-                        </Route>
-                        <Route exact path={"/signup"}>
-                            {user ? <Redirect to={"/account"} /> : <SignUp />}
-                        </Route>
-                        <Route component={FourOFour} />
-                    </Switch>
-                ) : (
-                    <div />
-                )}
-            </BrowserRouter>
-        </AppContext.Provider>
+        <QueryClientProvider client={client}>
+            <Routing />
+        </QueryClientProvider>
     );
 }
 
-ReactDOM.render(<Main />, document.getElementById("root"));
-serviceWorker.unregister();
-
-// <Route exact path={"/"}>
-//                     <Homepage />
-//                 </Route>
-//                 <Route exact path={"/build"}>
-//                     {user ? <BuildScreen /> : <Redirect to={"/login"} />}
-//                 </Route>
-//                 <Route exact path={"/account"}>
-//                     {user ? <Account /> : <Redirect to={"/login"} />}
-//                 </Route>
-//                 <Route exact path={"/login"}>
-//                     {user ? <Redirect to={"/account"} /> : <Login />}
-//                 </Route>
-//                 <Route exact path={"/signup"}>
-//                     {user ? <Redirect to={"/account"} /> : <SignUp />}
-//                 </Route>
-//                 <Route path={"*"}>
-//                     <FourOFour />
-//                 </Route>
+ReactDOM.render(<Main />, document.getElementById('root'));
+serviceWorker.register();

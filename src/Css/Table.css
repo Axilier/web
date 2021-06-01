@@ -1,0 +1,31 @@
+.table {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.table-header {
+    text-transform: capitalize;
+    font-weight: normal;
+    font-size: 17px;
+    padding: 10px 0;
+    border-bottom: solid 1px #C0C0C0;
+}
+
+.table-cell {
+    display: flex;
+    flex-direction: row;
+    height: 42px;
+    line-height: 42px;
+    border-bottom: solid 1px #C0C0C0;
+}
+
+.table-cell:hover {
+    cursor: pointer;
+}
+
+.table-no-data {
+    font-size: 22px;
+    padding: 20px 0;
+    margin: auto
+}

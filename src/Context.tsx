@@ -1,15 +1,19 @@
-import { createContext, Dispatch, SetStateAction } from "react";
+import { createContext } from 'react';
+import { App, StorageService, tableContextType } from './Types';
 
-interface App {
-    apiUrl: string;
-    user: {} | null;
-    setUser: Dispatch<SetStateAction<{} | null>> | (() => void);
-}
-
-/* eslint import/prefer-default-export: 0 */
+export const tableContext = createContext<tableContextType>({
+    hoveredRow: null,
+    setHoveredRow: () => null,
+});
 
 export const AppContext = createContext<App>({
-    apiUrl: "",
     user: null,
     setUser: () => {},
+    files: null,
+    setFiles: () => {},
+    mapProperties: {
+        name: '',
+        storageService: StorageService.Axilier,
+    },
+    setMapProperties: () => {},
 });

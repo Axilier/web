@@ -1,13 +1,14 @@
 .web-account-main {
     display: flex;
     flex-direction: row;
-    height: 100%;
+    min-height: 100vh;
+
 }
 
 .web-account-sidebar {
-    height: 100%;
     width: 150px;
-    background-color: #1E4EE5;
+    min-height: 100vh;
+    background-color: var(--primary-colour);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -23,6 +24,7 @@
     display: flex;
     flex-direction: column;
     flex-grow: 1;
+    min-width: 300px;
 }
 
 .web-account-topbar {
@@ -34,29 +36,41 @@
     height: 70px;
     padding: 0 65px;
     justify-content: space-between;
+    align-items: center;
 }
 
-.web-account-dropdown {
-    position: absolute;
+.web-account-profile-badge {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 140px;
-    width: 220px;
-    top: -20px;
-    right: 20px;
-    background-color: white;
-    opacity: 0;
-    border: 1px solid #dfdfdf;
-    transition: all .2s ease-in;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, .1);
-    border-radius: 3px;
-    z-index: 10;
+    flex-direction: row;
+    align-items: center;
 }
 
-.web-account-dropdown-open {
-    opacity: 1;
-    top: 0;
+.web-account-profile-logo {
+    line-height: 50px;
+    border-radius: 50%;
+    background-color: #F8F8F8;
+    height: 50px;
+    width: 50px;
+    margin: 0 5px 0 20px;
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--primary-colour);
+    font-weight: bold;
+}
+
+.web-account-profile-logo img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+.web-account-drop {
+    height: 15px;
+    width: 15px;
+}
+
+.web-account-dropdown-open-button:hover {
+    cursor: pointer;
 }
 
 .web-account-dropdown-tile {
@@ -71,7 +85,7 @@
     cursor: pointer;
 }
 
-.web-account-dropdown-profile {
+.web-account-dropdown-profile-top {
     display: flex;
     flex-direction: row;
     padding: 15px 15px;
@@ -79,19 +93,77 @@
 }
 
 .web-account-dropdown-profile-badge {
+    background-color: #F8F8F8;
+    text-align: center;
+    line-height: 30px;
     height: 30px;
     width: 30px;
-    background-color: #E4E4E4;
-    border-radius: 15px;
+    border-radius: 50%;
+    text-transform: uppercase;
+    color: var(--primary-colour);
+    font-weight: bold;
+}
+
+.web-account-dropdown-profile-badge img {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
 }
 
 .web-account-content-area {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    color: #464646;
+    padding: 40px 70px;
 }
 
 .web-account-dropdown-profile-info p {
     font-size: 12px;
     margin: 0 0 0 5px;
     color: #828282;
-    text-transform: capitalize;
+}
+
+.web-account-dropdown-profile {
+    width: 220px;
+    right: 50px;
+}
+
+.web-account-dropdown-open {
+    visibility: visible;
+    opacity: 1;
+    top: 0;
+    z-index: 10;
+}
+
+.web-account-dropdown-closed {
+    visibility: hidden;
+    opacity: 0;
+    top: -20px;
+    z-index: 0;
+}
+
+.web-account-dropdown {
+    position: absolute;
+    transition: all .2s ease-in;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .1);
+    border-radius: 3px;
+}
+
+.web-account-create-dropdown {
+    padding: 30px;
+    width: 300px;
+    right: 160px;
+}
+
+.web-account-new-map-error {
+    font-size: 13px;
+    color: #F01919;
+    display: flex;
+    height: 30px;
+    align-items: center;
 }
